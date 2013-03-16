@@ -13,11 +13,11 @@ make install
 ## Configuration
 For now there is only one piece of configuration:
 
-`set -U tank_reporter dots` for simple output (default)
+`set -U tank_reporter dots` for simple output (default).
 
 ![tank_reporter dots](https://raw.github.com/terlar/fish-tank/master/doc/fish-tank_dots.png)
 
-`set -U tank_reporter spec` for detailed output
+`set -U tank_reporter spec` for detailed output.
 
 ![tank_reporter spec](https://raw.github.com/terlar/fish-tank/master/doc/fish-tank_spec.png)
 
