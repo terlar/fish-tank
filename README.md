@@ -11,10 +11,12 @@ A small test framework for [fish](https://github.com/fish-shell/fish-shell) that
 For now there is only one piece of configuration:
 
 `set -U tank_reporter dots` for simple output (default)
-![tank_reporter dots](https://raw.github.com/terlar/fish-tank/master/fish-tank_dots.png)
+
+![tank_reporter dots](https://raw.github.com/terlar/fish-tank/master/doc/fish-tank_dots.png)
 
 `set -U tank_reporter spec` for detailed output
-![tank_reporter spec](https://raw.github.com/terlar/fish-tank/master/fish-tank_spec.png)
+
+![tank_reporter spec](https://raw.github.com/terlar/fish-tank/master/doc/fish-tank_spec.png)
 
 ## Examples
 A simple approach using a test helper.
