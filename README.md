@@ -1,5 +1,5 @@
 # fish-tank
-A small test framework for [fish](https://github.com/fish-shell/fish-shell) that helps you observe (run) and create speciments (specs) convenienly.
+A small test framework for [fish](https://github.com/fish-shell/fish-shell) that helps you create speciments (specs) and observe (run) them in the tank.
 
 ## Install
 
@@ -19,7 +19,7 @@ For now there is only one piece of configuration:
 ![tank_reporter spec](https://raw.github.com/terlar/fish-tank/master/doc/fish-tank_spec.png)
 
 ## Examples
-A simple approach using a test helper.
+A simple approach using a test helper. Could be even simpler if you assume users have fish-tank installed, but it is good practice to make sure.
 
 **helper.fish**
 
