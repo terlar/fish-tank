@@ -11,7 +11,7 @@ end
 
 function spec_reporter_dots_with_error_2 -d 'outputs colored dots'
   function expected
-    echo -n (set_color red).(set_color normal)
+    echo -n (set_color red)F(set_color normal)
     echo -n (set_color green).(set_color normal)
     echo -n (set_color green).(set_color normal)
   end
