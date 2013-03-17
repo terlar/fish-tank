@@ -9,6 +9,8 @@ function __tank_report
     set __tank_species_failed (math $__tank_species_failed + 1)
   end
 
+  function __tank_reporter_quiet; end
+
   if not functions -q $reporter
     set reporter __tank_reporter_dots
   end
