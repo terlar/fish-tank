@@ -39,8 +39,8 @@ end
 
 . ../path/to/guppie.fish
 
-function setup_tank; return; end
-function clean_tank; return; end
+function setup_tank; end
+function clean_tank; end
 ```
 
 **guppie_spec.fish**
