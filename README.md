@@ -1,6 +1,6 @@
 # fish-tank
 A small test framework for [fish](https://github.com/fish-shell/fish-shell)
-that helps you create specimens (specs) and observe them in the tank (run).
+that helps you create species (specs) and observe them in the tank (run).
 
 ## Install
 

@@ -1,11 +1,11 @@
 . helper.fish
 
-function specimen
-  fish specimens/reporter_spec.fish
+function species
+  fish species/reporter_spec.fish
 end
 
 function spec_reporter_spec_1 -d 'returns status 0'
-  specimen
+  species
   test $status -eq 0
 end
 
@@ -19,11 +19,11 @@ function spec_reporter_spec_2 -d 'outputs colored descriptions'
     set_color normal
   end
 
-  contains (expected) (specimen)
+  contains (expected) (species)
 end
 
 function spec_reporter_spec_3 -d 'outputs summary'
-  contains '3 examples, 0 failures' (specimen)
+  contains '3 examples, 0 failures' (species)
 end
 
 . $fish_tank
