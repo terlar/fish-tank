@@ -2,20 +2,20 @@ function __tank_observe
   functions -q setup_tank; or function setup_tank; return; end;
   functions -q clean_tank; or function clean_tank; return; end;
 
-  for spec in $__tank_species
+  for example in $__tank
     setup_tank
 
-    eval "$spec >/dev/null"
-    __tank_report $status $spec
+    eval "$example >/dev/null"
+    __tank_report $status $example
 
     clean_tank
   end
 
   echo
 
-  set -l summary "$__tank_species_total examples, $__tank_species_failed failures"
+  set -l summary "$__tank_examples examples, $__tank_failures failures"
 
-  if test $__tank_species_failed -eq 0
+  if test $__tank_failures -eq 0
     echo $summary
   else
     set_color red

@@ -1,6 +1,6 @@
 # fish-tank
 A small test framework for [fish](https://github.com/fish-shell/fish-shell)
-that helps you create species (specs) and observe them in the tank (run).
+that helps you create species (specs) and observe their behavior in the tank (run).
 
 ## Install
 
@@ -55,16 +55,16 @@ function clean_tank
   set -e guppie_count
 end
 
-function spec_guppie_outputs -d 'outputs "blubb blubb..."'
+function it_outputs -d 'outputs "blubb blubb..."'
   test (guppie) = 'blubb blubb...'
 end
 
-function spec_guppie_returns -d 'returns status 0'
+function it_returns_status -d 'returns status 0'
   guppie
   test $status -eq 0
 end
 
-function spec_guppie_manipulates_count -d 'manipulates $guppie_count'
+function it_manipulates_count -d 'manipulates $guppie_count'
   guppie
   test $guppie_count = 9000
 end

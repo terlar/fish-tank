@@ -1,8 +1,8 @@
 function __tank_fill
   for func in (functions -n)
     switch $func
-      case 'spec_*'
-        tank_add_species $func
+      case 'it_*'
+        tank_add $func
     end
   end
 end

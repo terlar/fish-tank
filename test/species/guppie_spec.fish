@@ -6,16 +6,16 @@ function clean_tank
   set -e guppie_count
 end
 
-function spec_guppie_outputs -d 'outputs "blubb blubb..."'
+function it_outputs_blubb_blubb -d 'outputs "blubb blubb..."'
   test (guppie) = 'blubb blubb...'
 end
 
-function spec_guppie_returns -d 'returns status 0'
+function it_returns_status_0 -d 'returns status 0'
   guppie
   test $status -eq 0
 end
 
-function spec_guppie_manipulates_count -d 'manipulates $guppie_count'
+function it_manipulates_count -d 'manipulates $guppie_count'
   guppie
   test $guppie_count = 9000
 end
