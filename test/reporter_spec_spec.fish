@@ -4,12 +4,12 @@ function species
   fish species/reporter_spec.fish
 end
 
-function it_returns_status_0 -d 'returns status 0'
+function it_returns_status_0
   species
   test $status -eq 0
 end
 
-function it_outputs_colored_description -d 'outputs colored descriptions'
+function it_outputs_colored_descriptions
   function expected
     echo (set_color green)'  ✓ manipulates $guppie_count'
     set_color normal
@@ -22,7 +22,7 @@ function it_outputs_colored_description -d 'outputs colored descriptions'
   contains (expected) (species)
 end
 
-function it_outputs_summary -d 'outputs summary'
+function it_outputs_summary
   contains '3 examples, 0 failures' (species)
 end
 

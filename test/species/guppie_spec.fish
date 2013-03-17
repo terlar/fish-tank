@@ -10,7 +10,7 @@ function it_outputs_blubb_blubb -d 'outputs "blubb blubb..."'
   test (guppie) = 'blubb blubb...'
 end
 
-function it_returns_status_0 -d 'returns status 0'
+function it_returns_status_0
   guppie
   test $status -eq 0
 end

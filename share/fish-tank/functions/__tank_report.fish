@@ -17,5 +17,12 @@ function __tank_report
 end
 
 function __tank_example_description
-  functions $argv[1] | grep -v '^$' | head -n 1 | sed -E "s|.*'(.*)'.*|\1|"
+  set -l name $argv[1]
+  set -l description (functions $argv[1] | grep -m1 -v '^$' | sed -E "s|.*'(.*)'.*|\1|" | grep -v $name)
+
+  if test -z $description
+    set description (echo $name | sed 's|it_||' | tr _ ' ')
+  end
+
+  echo $description
 end
