@@ -12,5 +12,14 @@ function __tank_observe
   end
 
   echo
-  echo "$__tank_species_total examples, $__tank_species_failed failures"
+
+  set -l summary "$__tank_species_total examples, $__tank_species_failed failures"
+
+  if test $__tank_species_failed -eq 0
+    echo $summary
+  else
+    set_color red
+    echo $summary
+    set_color normal
+  end
 end

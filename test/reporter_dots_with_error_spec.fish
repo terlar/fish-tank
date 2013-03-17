@@ -20,7 +20,13 @@ function spec_reporter_dots_with_error_2 -d 'outputs colored dots'
 end
 
 function spec_reporter_dots_with_error_3 -d 'outputs summary'
-  contains '3 examples, 1 failures' (species)
+  function expected
+    set_color red
+    echo '3 examples, 1 failures'
+    set_color normal
+  end
+
+  contains (expected) (species)
 end
 
 . $fish_tank
