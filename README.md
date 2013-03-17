@@ -2,7 +2,7 @@
 A small test framework for [fish](https://github.com/fish-shell/fish-shell)
 that helps you create species (specs) and observe their behavior in the tank (run).
 
-## Install
+## Installation
 
 ```sh
 git clone git://github.com/terlar/fish-tank.git
