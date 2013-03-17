@@ -21,6 +21,8 @@ For now there is only one piece of configuration:
 
 ![tank_reporter spec](https://raw.github.com/terlar/fish-tank/master/doc/fish-tank_spec.png)
 
+`set -U tank_reporter quiet` for only summary output.
+
 ## Examples
 A simple approach using a test helper.
 It could be even simpler if you assume users have `fish-tank` installed, but it is good practice to make sure.
