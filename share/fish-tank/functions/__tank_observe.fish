@@ -1,6 +1,6 @@
 function __tank_observe
-  functions -q setup_tank; or function setup_tank; return; end;
-  functions -q clean_tank; or function clean_tank; return; end;
+  functions -q setup_tank; or function setup_tank; end;
+  functions -q clean_tank; or function clean_tank; end;
 
   for example in $__tank_examples
     setup_tank
