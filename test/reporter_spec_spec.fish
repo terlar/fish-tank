@@ -1,7 +1,7 @@
-. helper.fish
+. (dirname (status -f))/helper.fish
 
 function species
-  fish species/reporter_spec.fish
+  fish $species_path/reporter_spec.fish
 end
 
 function it_returns_status_0
