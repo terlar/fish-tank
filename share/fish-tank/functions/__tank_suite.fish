@@ -1,8 +1,8 @@
-function __tank_fill
+function __tank_suite
   for func in (functions -n)
     switch $func
       case 'it_*'
-        tank_add $func
+        echo $func
     end
   end
 end
