@@ -9,7 +9,7 @@ function tank_run
     eval "$example >/dev/null"
     set -l example_status $status
 
-    __tank_report $example $example_status
+    __tank_reporter $example $example_status
 
     if test $example_status -gt 0
       set failures $failures $example

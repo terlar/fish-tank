@@ -1,4 +1,4 @@
-function __tank_report
+function __tank_reporter
   set -l example_description (__tank_example_description $argv[1])
   set -l reporter "__tank_reporter_$tank_reporter"
 
