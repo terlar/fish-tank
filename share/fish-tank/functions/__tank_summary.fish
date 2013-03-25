@@ -1,6 +1,6 @@
 function __tank_summary
-  echo
   set -l summary "$argv[1] examples, $argv[2] failures"
+  echo
 
   if test $argv[2] -eq 0
     echo $summary
