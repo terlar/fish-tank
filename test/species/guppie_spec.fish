@@ -1,9 +1,9 @@
 function setup_tank
-  set -xg guppie_count 1
+  set -g guppie_count 1
 end
 
 function clean_tank
-  set -e guppie_count
+  set -eg guppie_count
 end
 
 function it_outputs_blubb_blubb -d 'outputs "blubb blubb..."'

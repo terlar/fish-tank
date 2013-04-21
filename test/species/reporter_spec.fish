@@ -1,4 +1,4 @@
-set -xg tank_reporter spec
+set -g tank_reporter spec
 
 function guppie
   echo 'blubb blubb...'

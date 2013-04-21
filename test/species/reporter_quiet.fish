@@ -1,4 +1,4 @@
-set -xg tank_reporter quiet
+set -g tank_reporter quiet
 
 function guppie
   echo 'blubb blubb...'

@@ -30,7 +30,7 @@ You could of course also skip the helper in simple cases, but it is recommended 
 
 **helper.fish**
 ```sh
-set -xg fish_tank /usr/local/share/fish-tank/tank.fish
+set fish_tank /usr/local/share/fish-tank/tank.fish
 if not test -e $fish_tank
   set -e fish_tank
   echo 'error: fish-tank is required to run these tests (https://github.com/terlar/fish-tank)'
@@ -48,11 +48,11 @@ function clean_tank; end
 . helper.fish
 
 function setup_tank
-  set -xg guppie_count 1
+  set -g guppie_count 1
 end
 
 function clean_tank
-  set -e guppie_count
+  set -eg guppie_count
 end
 
 function it_outputs -d 'outputs "blubb blubb..."'
