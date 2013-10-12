@@ -22,9 +22,10 @@ end
 function __tank_test_teardown -e test_finished
   functions -q teardown; and teardown
   functions -e $argv
+  set -e __tank_current_test_skip
 
-  if set -q __tank_current_test_skip
-    set -e __tank_current_test_skip
+  if set -q __tank_current_test_skip_status
+    set -e __tank_current_test_skip_status
     return
   end
 
@@ -35,6 +36,10 @@ function __tank_test_teardown -e test_finished
   end
 end
 
-function __tank_test_stop -e test_skip -e test_stop
+function __tank_test_skip_status -e test_skip
+  set -g __tank_current_test_skip_status 1
+end
+
+function __tank_test_skip_assertions -e test_skip -e test_stop
   set -g __tank_current_test_skip 1
 end
