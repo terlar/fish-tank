@@ -1,11 +1,22 @@
 function __tank_reporter_dots
-  if test $argv[1] -eq 0
-    set_color green
-    echo -n .
-  else
-    set_color red
-    echo -n F
+  function __tank_report_start
+    echo
+    echo '# Running:'
+    echo
   end
 
-  set_color normal
+  function __tank_report_progress
+    if test $argv = 0
+      echo -n '.'
+    else
+      echo -n 'F'
+    end
+  end
+
+  function __tank_report_finish
+    echo
+    __tank_report_stats
+    __tank_report_results
+    __tank_report_summary
+  end
 end

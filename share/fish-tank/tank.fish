@@ -5,6 +5,6 @@ if not contains $tank_path/functions $fish_function_path
   set fish_function_path $tank_path/functions $fish_function_path
 end
 
-tank_run
-
-exit
+source $tank_path/features/assertions.fish
+source $tank_path/features/reporting.fish
+source $tank_path/features/stubs.fish
