@@ -1,6 +1,6 @@
 # fish-tank
-A small test framework for [fish](https://github.com/fish-shell/fish-shell)
-that helps you create species (specs) and observe their behavior in the tank (run).
+The test framework for [fish](https://github.com/fish-shell/fish-shell),
+write some tests and find out how they behave in the tank.
 
 ## Installation
 
@@ -21,8 +21,6 @@ For now there is only one piece of configuration:
 
 ![tank_reporter spec](https://raw.github.com/terlar/fish-tank/master/doc/fish-tank_spec.png)
 
-`set -U tank_reporter quiet` for only summary output.
-
 ## Examples
 A simple approach using a test helper.
 It could be even simpler if you assume users have `fish-tank` installed, but it is good practice to make sure.
@@ -30,44 +28,45 @@ You could of course also skip the helper in simple cases, but it is recommended 
 
 **helper.fish**
 ```sh
-set fish_tank /usr/local/share/fish-tank/tank.fish
+set -l fish_tank /usr/local/share/fish-tank/tank.fish
 if not test -e $fish_tank
-  set -e fish_tank
   echo 'error: fish-tank is required to run these tests (https://github.com/terlar/fish-tank)'
   exit 1
 end
 
-. ../path/to/guppie.fish
-
-function setup_tank; end
-function clean_tank; end
+source (dirname (status -f))/../share/guppie/guppie.fish
 ```
 
-**guppie_spec.fish**
+**test_guppie.fish**
 ```sh
-. helper.fish
+function suite_guppie
+  function setup
+    mkdir -p /tmp/guppie_tank
+    stub_var guppie_count 1
+  end
 
-function setup_tank
-  set -g guppie_count 1
+  function teardown
+    rm -r /tmp/guppie_tank
+  end
+
+  function test_count
+    assert_equal 1 (guppie --count)
+    assert (guppie --add 4)
+    assert_equal 5 (guppie --count)
+  end
+
+  function test_error
+    refute (guppie --unknown)
+  end
+
+  function test_color
+    assert_includes orange (guppie --colors)
+  end
 end
 
-function clean_tank
-  set -eg guppie_count
-end
 
-function it_outputs -d 'outputs "blubb blubb..."'
-  test (guppie) = 'blubb blubb...'
+if not set -q tank_running
+  source (dirname (status -f))/helper.fish
+  tank_run
 end
-
-function it_returns_status
-  guppie
-  test $status -eq 0
-end
-
-function it_manipulates_count -d 'manipulates $guppie_count'
-  guppie
-  test $guppie_count = 9000
-end
-
-. $fish_tank
 ```

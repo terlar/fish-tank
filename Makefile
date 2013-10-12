@@ -1,5 +1,5 @@
 NAME=fish-tank
-VERSION=0.0.1
+VERSION=0.1.0
 AUTHOR=terlar
 URL=https://github.com/$(AUTHOR)/$(NAME)
 
