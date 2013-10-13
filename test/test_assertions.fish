@@ -13,6 +13,8 @@ function suite_assertions
 
   function test_assert_includes
     assert_includes foo bar foo moo
+    assert_includes -a -a -b -c
+    assert_includes --all --all --other
   end
 
   function test_assert_match
@@ -29,6 +31,8 @@ function suite_assertions
 
   function test_refute_includes
     refute_includes foo bar moo zoo
+    refute_includes -a -b -c
+    refute_includes --unknown --all --other
   end
 
   function test_refute_match

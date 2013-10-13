@@ -34,7 +34,7 @@ function assert_includes
   set -l item $argv[1]
   set -l list $argv[2..-1]
 
-  if contains "$item" $list
+  if contains -- "$item" $list
     emit assertion_success
   else
     emit assertion_failure "Expected \"$list\" to include \"$item\""
@@ -86,7 +86,7 @@ function refute_includes
   set -l item $argv[1]
   set -l list $argv[2..-1]
 
-  if not contains "$item" $list
+  if not contains -- "$item" $list
     emit assertion_success
   else
     emit assertion_failure "Expected \"$list\" to not include \"$item\""
