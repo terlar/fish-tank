@@ -45,7 +45,7 @@ function __tank_report_setup -e tank_run
   set -g __tank_results
   set -g __tank_results_label
 
-  set -l reporter __tank_reporter_$tank_reporter
+  set -l reporter "__tank_reporter_$tank_reporter"
   if not functions -q $reporter
     set reporter __tank_reporter_dots
   end
