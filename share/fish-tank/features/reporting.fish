@@ -27,6 +27,7 @@ end
 # Utils
 function time_diff
   test (count $argv) = 2; or return 1
+  test (which bc ^/dev/null); or return 1
   set -l start $argv[1]
   set -l end $argv[2]
   set -l diff (expr $end - $start)
