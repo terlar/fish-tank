@@ -1,7 +1,7 @@
 function stub
   set -l target $argv[1]
   set -l stub $argv[2]
-  set __tank_stubs $__tank_stubs $target
+  set -g __tank_stubs $__tank_stubs $target
 
   if functions -q $target
     if not functions -q __tank_stubs_backup_$target
