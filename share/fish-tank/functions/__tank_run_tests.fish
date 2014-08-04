@@ -34,6 +34,8 @@ function __tank_test_teardown -e test_finished
     emit test_success
   case failure
     emit test_failure
+  case error
+    emit test_error
   end
 end
 

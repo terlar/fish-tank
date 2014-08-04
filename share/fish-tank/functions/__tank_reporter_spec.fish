@@ -19,6 +19,9 @@ function __tank_reporter_spec
     case failure
       set_color red
       echo -n '  ✗ '
+    case error
+      set_color red
+      echo -n '  E '
     end
 
     echo $__tank_current_test

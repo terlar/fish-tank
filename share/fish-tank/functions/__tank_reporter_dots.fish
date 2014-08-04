@@ -11,6 +11,8 @@ function __tank_reporter_dots
       echo -n '.'
     case failure
       echo -n 'F'
+    case error
+      echo -n 'E'
     end
   end
 
