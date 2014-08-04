@@ -4,14 +4,28 @@ function __tank_report_stats
 end
 
 function __tank_report_results
-  test $__tank_failures -eq 0; and return
+  if test $__tank_failures -gt 0
+    set -l result_count (count $__tank_failure_results)
+    test $result_count -eq 0; and return
 
-  set -l result_count (count $__tank_results)
-  for count in (seq 1 $result_count)
-    echo
-    echo "  $count) Failure:"
-    echo "$__tank_results_label[$count]:"
-    echo $__tank_results[$count]
+    for count in (seq 1 $result_count)
+      echo
+      echo "  $count) Failure:"
+      echo "$__tank_failure_results_label[$count]:"
+      echo $__tank_failure_results[$count]
+    end
+  end
+
+  if test $__tank_errors -gt 0
+    set -l result_count (count $__tank_error_results)
+    test $result_count -eq 0; and return
+
+    for count in (seq 1 $result_count)
+      echo
+      echo "  $count) Error:"
+      echo "$__tank_error_results_label[$count]:"
+      echo $__tank_error_results[$count]
+    end
   end
 end
 
@@ -42,8 +56,10 @@ function __tank_report_setup -e tank_run
   set -g __tank_skips 0
   set -g __tank_failures 0
 
-  set -g __tank_results
-  set -g __tank_results_label
+  set -g __tank_failure_results
+  set -g __tank_failure_results_label
+  set -g __tank_error_results
+  set -g __tank_error_results_label
 
   set -l reporter "__tank_reporter_$tank_reporter"
   if not functions -q $reporter
@@ -62,27 +78,34 @@ end
 
 
 function __tank_report_test_success -e test_success
-  __tank_report_progress 0
+  __tank_report_progress success
 end
 function __tank_report_test_failure -e test_failure
-  __tank_report_progress 1
+  __tank_report_progress failure
+end
+function __tank_report_test_error -e test_error
+  set __tank_errors (expr $__tank_errors + 1)
+  __tank_report_progress error
+end
+function __tank_report_test_skip -e test_skip
+  set __tank_skips (expr $__tank_skips + 1)
+  __tank_report_progress skip
 end
 
 function __tank_report_test_run -e test_run
   set __tank_count (expr $__tank_count + 1)
 end
-function __tank_report_test_skip -e test_skip
-  set __tank_skips (expr $__tank_skips + 1)
-end
-function __tank_report_test_error -e test_error
-  set __tank_errors (expr $__tank_errors + 1)
-end
 
-function __tank_report_assertion -e assertion_success -e assertion_failure
+function __tank_report_assertion -e assertion_success -e assertion_failure -e assertion_error
   set __tank_assertions (expr $__tank_assertions + 1)
 end
 function __tank_report_assertion_failure -e assertion_failure
   set __tank_failures (expr $__tank_failures + 1)
-  set __tank_results $__tank_results $argv
-  set __tank_results_label $__tank_results_label $__tank_current_suite'#'$__tank_current_test
+  set __tank_failure_results $__tank_failure_results $argv
+  set __tank_failure_results_label $__tank_failure_results_label $__tank_current_suite'#'$__tank_current_test
+end
+
+function __tank_report_assertion_error -e assertion_error
+  set __tank_error_results $__tank_error_results $argv
+  set __tank_error_results_label $__tank_grror_results_label $__tank_current_suite'#'$__tank_current_test
 end

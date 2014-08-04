@@ -6,10 +6,15 @@ function __tank_reporter_dots
   end
 
   function __tank_report_progress
-    if test $argv = 0
+    switch $argv
+    case success
       echo -n '.'
-    else
+    case failure
       echo -n 'F'
+    case error
+      echo -n 'E'
+    case skip
+      echo -n 'S'
     end
   end
 

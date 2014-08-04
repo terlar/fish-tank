@@ -18,6 +18,12 @@ end
 
 function assert_equal
   set -gq __tank_current_test_skip; and return
+
+  if test (count $argv) -lt 2
+    emit assertion_error 'Wrong number of arguments'
+    return
+  end
+
   set -l expected $argv[1]
   set -l actual $argv[2..-1]
 
@@ -30,6 +36,11 @@ end
 
 function assert_includes
   set -gq __tank_current_test_skip; and return
+
+  if test (count $argv) -lt 2
+    emit assertion_error 'Wrong number of arguments'
+    return
+  end
 
   set -l item $argv[1]
   set -l list $argv[2..-1]
@@ -70,6 +81,12 @@ end
 
 function refute_equal
   set -gq __tank_current_test_skip; and return
+
+  if test (count $argv) -lt 2
+    emit assertion_error 'Wrong number of arguments'
+    return
+  end
+
   set -l expected $argv[1]
   set -l actual $argv[2..-1]
 
@@ -82,6 +99,11 @@ end
 
 function refute_includes
   set -gq __tank_current_test_skip; and return
+
+  if test (count $argv) -lt 2
+    emit assertion_error 'Wrong number of arguments'
+    return
+  end
 
   set -l item $argv[1]
   set -l list $argv[2..-1]
@@ -108,6 +130,11 @@ end
 
 # Events
 function __tank_assertion_failure -e assertion_failure
-  set -g __tank_current_test_status 1
+  set -g __tank_current_test_status failure
+  emit test_stop
+end
+
+function __tank_assertion_error -e assertion_error
+  set -g __tank_current_test_status error
   emit test_stop
 end

@@ -12,12 +12,18 @@ function __tank_reporter_spec
       echo $suite
     end
 
-    if test $argv = 0
+    switch $argv
+    case success
       set_color green
       echo -n '  ✓ '
-    else
+    case failure
       set_color red
       echo -n '  ✗ '
+    case error
+      set_color red
+      echo -n '  E '
+    case skip
+      return
     end
 
     echo $__tank_current_test

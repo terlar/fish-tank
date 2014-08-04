@@ -15,7 +15,7 @@ end
 # Events
 function __tank_test_setup -e test_run
   set -g __tank_current_test $argv
-  set -g __tank_current_test_status 0
+  set -g __tank_current_test_status success
   functions -q setup; and setup
 end
 
@@ -24,20 +24,16 @@ function __tank_test_teardown -e test_finished
   functions -e $argv
   set -e __tank_current_test_skip
 
-  if set -q __tank_current_test_skip_status
-    set -e __tank_current_test_skip_status
-    return
-  end
-
-  if test $__tank_current_test_status -eq 0
+  switch $__tank_current_test_status
+  case success
     emit test_success
-  else
+  case failure
     emit test_failure
+  case error
+    emit test_error
+  case skip
+    # skip
   end
-end
-
-function __tank_test_skip_status -e test_skip
-  set -g __tank_current_test_skip_status 1
 end
 
 function __tank_test_skip_assertions -e test_skip -e test_stop
