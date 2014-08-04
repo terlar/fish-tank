@@ -87,12 +87,13 @@ function __tank_report_test_error -e test_error
   set __tank_errors (expr $__tank_errors + 1)
   __tank_report_progress error
 end
+function __tank_report_test_skip -e test_skip
+  set __tank_skips (expr $__tank_skips + 1)
+  __tank_report_progress skip
+end
 
 function __tank_report_test_run -e test_run
   set __tank_count (expr $__tank_count + 1)
-end
-function __tank_report_test_skip -e test_skip
-  set __tank_skips (expr $__tank_skips + 1)
 end
 
 function __tank_report_assertion -e assertion_success -e assertion_failure -e assertion_error

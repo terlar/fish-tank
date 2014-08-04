@@ -24,11 +24,6 @@ function __tank_test_teardown -e test_finished
   functions -e $argv
   set -e __tank_current_test_skip
 
-  if set -q __tank_current_test_skip_status
-    set -e __tank_current_test_skip_status
-    return
-  end
-
   switch $__tank_current_test_status
   case success
     emit test_success
@@ -36,11 +31,9 @@ function __tank_test_teardown -e test_finished
     emit test_failure
   case error
     emit test_error
+  case skip
+    # skip
   end
-end
-
-function __tank_test_skip_status -e test_skip
-  set -g __tank_current_test_skip_status 1
 end
 
 function __tank_test_skip_assertions -e test_skip -e test_stop

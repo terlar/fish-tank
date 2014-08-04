@@ -13,6 +13,8 @@ function __tank_reporter_dots
       echo -n 'F'
     case error
       echo -n 'E'
+    case skip
+      echo -n 'S'
     end
   end
 

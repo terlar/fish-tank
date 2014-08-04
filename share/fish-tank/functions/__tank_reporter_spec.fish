@@ -22,6 +22,8 @@ function __tank_reporter_spec
     case error
       set_color red
       echo -n '  E '
+    case skip
+      return
     end
 
     echo $__tank_current_test
