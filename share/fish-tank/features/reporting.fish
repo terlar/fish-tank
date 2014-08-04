@@ -62,10 +62,10 @@ end
 
 
 function __tank_report_test_success -e test_success
-  __tank_report_progress 0
+  __tank_report_progress success
 end
 function __tank_report_test_failure -e test_failure
-  __tank_report_progress 1
+  __tank_report_progress failure
 end
 
 function __tank_report_test_run -e test_run

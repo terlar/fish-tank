@@ -108,6 +108,6 @@ end
 
 # Events
 function __tank_assertion_failure -e assertion_failure
-  set -g __tank_current_test_status 1
+  set -g __tank_current_test_status failure
   emit test_stop
 end
