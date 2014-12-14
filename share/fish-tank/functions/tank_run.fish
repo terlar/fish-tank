@@ -8,5 +8,5 @@ function tank_run
 		end
 	end
 
-	tank_run_suite (functions -q | grep suite_)
+	tank_run_suite (functions -q | grep suite_ | shuf)
 end

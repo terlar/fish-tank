@@ -3,7 +3,7 @@ function __tank_run_tests
 	functions -n | grep test_
 		eval $argv >/dev/null
 		functions -n | grep test_
-	end | sort | uniq -u)
+	end | sort | uniq -u | shuf)
 
 	for test in $tests
 		emit test_run $test
