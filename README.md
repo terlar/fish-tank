@@ -1,4 +1,5 @@
-# fish-tank
+# fish-tank [![Build Status](https://travis-ci.org/terlar/fish-tank.svg?branch=master)](https://travis-ci.org/terlar/fish-tank)
+
 The test framework for [fish](https://github.com/fish-shell/fish-shell),
 write some tests and find out how they behave in the tank.
 
