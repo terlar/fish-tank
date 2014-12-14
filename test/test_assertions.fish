@@ -1,6 +1,6 @@
 function suite_assertions
 	function test_assert
-			assert (true)
+		assert (true)
 	end
 
 	function test_assert_empty
