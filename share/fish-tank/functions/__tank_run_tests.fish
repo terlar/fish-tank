@@ -1,6 +1,6 @@
 function __tank_run_tests
 	set -l tests (begin
-	functions -n | grep test_
+		functions -n | grep test_
 		eval $argv >/dev/null
 		functions -n | grep test_
 	end | sort | uniq -u | shuf)

@@ -4,7 +4,7 @@ function tank_run
 
 	if test (count $argv) -gt 0
 		for file in $argv
-				source $file
+			source $file
 		end
 	end
 

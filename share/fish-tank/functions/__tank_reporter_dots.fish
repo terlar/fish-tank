@@ -1,8 +1,8 @@
 function __tank_reporter_dots
 	function __tank_report_start
-			echo
-			echo '# Running:'
-			echo
+		echo
+		echo '# Running:'
+		echo
 	end
 
 	function __tank_report_progress
