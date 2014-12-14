@@ -51,7 +51,7 @@ function unstub_var
 end
 
 function stub_dir
-	set -l dirname (mktemp -d fish-tank_stub_dir.XXXXXXXXXX)
+	set -l dirname (mktemp -d -t fish-tank_stub_dir.XXXXXXXXXX)
 	set -l funcname __fish-tank_stub_dir_(basename $dirname)
 
 	# Make sure directory is erased when test finishes
@@ -78,7 +78,7 @@ function stub_file
 		touch $filename
 
 	else
-		set filename (mktemp fish-tank_stub_file.XXXXXXXXXX)
+		set filename (mktemp -t fish-tank_stub_file.XXXXXXXXXX)
 		set -l funcname __fish-tank_stub_file_(basename $filename)
 
 		# Make sure file is erased when test finishes
