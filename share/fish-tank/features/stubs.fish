@@ -34,7 +34,12 @@ function stub_var
 	if not set -q __tank_var_stubs_backup_$target
 		set -g __tank_var_stubs_backup_$target $$target
 	end
-	set $target $stub
+
+	if set -q $target
+		set $target $stub
+	else
+		set -g $target $stub
+	end
 end
 
 function unstub_var

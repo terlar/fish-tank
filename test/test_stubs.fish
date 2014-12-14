@@ -26,6 +26,14 @@ function suite_stubs
 		refute (functions -q dummy_stub)
 	end
 
+	function test_function_stubbing_without_original
+		function dummy_stub
+			echo stubbed
+		end
+		stub dummy dummy_stub
+		assert_equal stubbed (dummy)
+	end
+
 	function test_variable_stubbing
 		assert_equal original $dummy
 
@@ -34,6 +42,11 @@ function suite_stubs
 
 		unstub_var dummy
 		assert_equal original $dummy
+	end
+
+	function test_variable_stubbing_without_original
+		stub_var unknown stubbed
+		assert_equal stubbed "$unknown"
 	end
 
 	function test_stub_teardown
