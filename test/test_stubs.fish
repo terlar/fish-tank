@@ -63,6 +63,44 @@ function suite_stubs
 		refute (functions -q dummy_stub)
 		assert_equal original $dummy
 	end
+
+	function test_directory_stubbing
+		set -l dirname (stub_dir)
+		assert (test -d $dirname)
+
+		emit test_unstub
+
+		refute (test -d $dirname)
+	end
+
+	function test_directory_stubbing_with_explicit_name
+		set -l dirname (stub_dir stubbed)
+		assert (test -d $dirname)
+		assert_equal stubbed (basename $dirname)
+
+		emit test_unstub
+
+		refute (test -d $dirname)
+	end
+
+	function test_file_stubbing
+		set -l filename (stub_file)
+		assert (test -f $filename)
+
+		emit test_unstub
+
+		refute (test -f $filename)
+	end
+
+	function test_file_stubbing_with_explicit_name
+		set -l filename (stub_file stubbed)
+		assert (test -f $filename)
+		assert_equal stubbed (basename $filename)
+
+		emit test_unstub
+
+		refute (test -f $filename)
+	end
 end
 
 if not set -q tank_running

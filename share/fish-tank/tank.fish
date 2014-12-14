@@ -11,6 +11,6 @@ if not type -t source >/dev/null
 	end
 end
 
-source $tank_path/features/assertions.fish
-source $tank_path/features/reporting.fish
-source $tank_path/features/stubs.fish
+for feature in $tank_path/features/*.fish
+	source $feature
+end

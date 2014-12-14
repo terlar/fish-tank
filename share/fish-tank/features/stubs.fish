@@ -50,6 +50,47 @@ function unstub_var
 	set -e $backup
 end
 
+function stub_dir
+	set -l dirname (mktemp -d fish-tank_stub_dir.XXXXXXXXXX)
+	set -l funcname __fish-tank_stub_dir_(basename $dirname)
+
+	# Make sure directory is erased when test finishes
+	function $funcname -V funcname -V dirname -e test_finished -e test_unstub
+		command rm -rf $dirname
+		functions -e $funcname
+	end
+
+	if set -q argv[1]
+		set dirname $dirname/$argv[1]
+		mkdir $dirname
+	end
+
+	echo $dirname
+end
+
+function stub_file
+	set -l filename
+	set -l funcname
+
+	if set -q argv[1]
+		set -l dirname (stub_dir)
+		set filename $dirname/$argv[1]
+		touch $filename
+
+	else
+		set filename (mktemp fish-tank_stub_file.XXXXXXXXXX)
+		set -l funcname __fish-tank_stub_file_(basename $filename)
+
+		# Make sure file is erased when test finishes
+		function $funcname -V funcname -V filename -e test_finished -e test_unstub
+			command rm $filename
+			functions -e $funcname
+		end
+	end
+
+	echo $filename
+end
+
 # Events
 function __tank_test_stub_teardown -e test_finished -e test_unstub
 	for target in $__tank_stubs
