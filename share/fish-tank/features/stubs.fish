@@ -55,9 +55,9 @@ function stub_dir
 	set -l funcname __fish-tank_stub_dir_(basename $dirname)
 
 	# Make sure directory is erased when test finishes
-	function $funcname -V funcname -V dirname -e test_finished -e test_unstub
-		command rm -rf $dirname
-		functions -e $funcname
+	eval function $funcname -e test_finished -e test_unstub\; \
+		command rm -rf $dirname\; \
+		functions -e $funcname\; \
 	end
 
 	if set -q argv[1]
@@ -82,9 +82,9 @@ function stub_file
 		set -l funcname __fish-tank_stub_file_(basename $filename)
 
 		# Make sure file is erased when test finishes
-		function $funcname -V funcname -V filename -e test_finished -e test_unstub
-			command rm $filename
-			functions -e $funcname
+		eval function $funcname -e test_finished -e test_unstub\; \
+			command rm $filename\; \
+			functions -e $funcname\; \
 		end
 	end
 
