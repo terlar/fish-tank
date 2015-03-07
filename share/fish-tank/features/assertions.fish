@@ -58,7 +58,7 @@ function assert_match
 	set -l pattern $argv[1]
 	set -e argv[1]
 
-	if echo $argv | grep $pattern >/dev/null
+	if echo $argv | grep -q $pattern
 		emit assertion_success
 	else
 		emit assertion_failure "Expected \"$pattern\" to match \"$argv\""
@@ -121,7 +121,7 @@ function refute_match
 	set -l pattern $argv[1]
 	set -e argv[1]
 
-	if echo $argv | grep -v $pattern >/dev/null
+	if echo $argv | grep -qv $pattern
 		emit assertion_success
 	else
 		emit assertion_failure "Expected \"$pattern\" to not match \"$argv\""
