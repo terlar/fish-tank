@@ -1,5 +1,5 @@
 NAME=fish-tank
-VERSION=0.1.1
+VERSION=0.1.2
 AUTHOR=terlar
 URL=https://github.com/$(AUTHOR)/$(NAME)
 
@@ -59,4 +59,5 @@ uninstall:
 	for file in $(INSTALL_FILES); do rm -f $(PREFIX)/$$file; done
 	rm -rf $(DOC_DIR)
 
+.DEFAULT_GOAL:=build
 .PHONY: build download sign verify clean test tag release install uninstall all
